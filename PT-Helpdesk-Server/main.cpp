@@ -7,7 +7,10 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-
+    a.setWindowIcon(QIcon());
+    a.setApplicationDisplayName("PT-Helpdesk Administrator");
+    a.setApplicationName("PT-Helpdesk Administrator");
+    a.setApplicationVersion("0.1.0");
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
     for (const QString &locale : uiLanguages) {
@@ -18,6 +21,8 @@ int main(int argc, char *argv[])
         }
     }
     MainWindow w;
+    w.setWindowTitle("Main Dashboard");
+    w.setWindowIcon(QIcon());
     w.show();
     return a.exec();
 }

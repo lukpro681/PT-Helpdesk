@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
         if (choice == QMessageBox::Yes)
         {
             ui->setupUi(this);
+
         }
         else
         {
@@ -26,6 +27,8 @@ MainWindow::MainWindow(QWidget *parent)
         }
     }
     else ui->setupUi(this);
+    ui->tempLlabel->clear();
+    ui->tempLlabel->setText(qApp->applicationName() + " " + qApp->applicationVersion());
 
 }
 

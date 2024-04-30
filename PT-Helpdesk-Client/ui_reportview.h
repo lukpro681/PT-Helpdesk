@@ -14,6 +14,8 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTextBrowser>
 
 QT_BEGIN_NAMESPACE
 
@@ -21,17 +23,33 @@ class Ui_reportView
 {
 public:
     QDialogButtonBox *buttonBox;
+    QLabel *logoLabel;
+    QTextBrowser *textBrowser;
+    QLabel *infoLabel;
 
     void setupUi(QDialog *reportView)
     {
         if (reportView->objectName().isEmpty())
             reportView->setObjectName("reportView");
-        reportView->resize(400, 300);
+        reportView->resize(710, 596);
         buttonBox = new QDialogButtonBox(reportView);
         buttonBox->setObjectName("buttonBox");
-        buttonBox->setGeometry(QRect(30, 240, 341, 32));
-        buttonBox->setOrientation(Qt::Horizontal);
+        buttonBox->setGeometry(QRect(520, 560, 166, 24));
         buttonBox->setStandardButtons(QDialogButtonBox::Ok|QDialogButtonBox::Save);
+        buttonBox->setCenterButtons(false);
+        logoLabel = new QLabel(reportView);
+        logoLabel->setObjectName("logoLabel");
+        logoLabel->setGeometry(QRect(9, 9, 281, 61));
+        textBrowser = new QTextBrowser(reportView);
+        textBrowser->setObjectName("textBrowser");
+        textBrowser->setGeometry(QRect(10, 80, 681, 471));
+        infoLabel = new QLabel(reportView);
+        infoLabel->setObjectName("infoLabel");
+        infoLabel->setGeometry(QRect(320, 10, 361, 61));
+        QFont font;
+        font.setFamilies({QString::fromUtf8("HoloLens MDL2 Assets")});
+        font.setPointSize(28);
+        infoLabel->setFont(font);
 
         retranslateUi(reportView);
         QObject::connect(buttonBox, &QDialogButtonBox::accepted, reportView, qOverload<>(&QDialog::accept));
@@ -43,6 +61,8 @@ public:
     void retranslateUi(QDialog *reportView)
     {
         reportView->setWindowTitle(QCoreApplication::translate("reportView", "Dialog", nullptr));
+        logoLabel->setText(QCoreApplication::translate("reportView", "LOGO", nullptr));
+        infoLabel->setText(QCoreApplication::translate("reportView", "Informacje o systemie", nullptr));
     } // retranslateUi
 
 };

@@ -99,8 +99,8 @@ public:
         actionAbout->setText(QCoreApplication::translate("MainWindow", "About", nullptr));
         actionShow_basic_report->setText(QCoreApplication::translate("MainWindow", "Show basic report", nullptr));
         actionShow_advanced_report->setText(QCoreApplication::translate("MainWindow", "Show advanced report", nullptr));
-        tempLlabel->setText(QCoreApplication::translate("MainWindow", "PT-HELPDESK 0.1.0", nullptr));
-        reportButton->setText(QCoreApplication::translate("MainWindow", "Report Problem", nullptr));
+        tempLlabel->setText(QCoreApplication::translate("MainWindow", "VERSION", nullptr));
+        reportButton->setText(QCoreApplication::translate("MainWindow", "Create Case", nullptr));
         menuMore->setTitle(QCoreApplication::translate("MainWindow", "More", nullptr));
         menuReport->setTitle(QCoreApplication::translate("MainWindow", "Report", nullptr));
     } // retranslateUi
