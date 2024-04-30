@@ -55,11 +55,20 @@ public:
         gridLayout->setObjectName("gridLayout");
         tempLlabel = new QLabel(centralwidget);
         tempLlabel->setObjectName("tempLlabel");
+        tempLlabel->setEnabled(true);
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(tempLlabel->sizePolicy().hasHeightForWidth());
+        tempLlabel->setSizePolicy(sizePolicy);
+        tempLlabel->setMaximumSize(QSize(16777215, 210));
         QFont font;
-        font.setFamilies({QString::fromUtf8("Comic Sans MS")});
+        font.setFamilies({QString::fromUtf8("Segoe UI")});
         font.setPointSize(48);
-        font.setBold(true);
+        font.setBold(false);
         tempLlabel->setFont(font);
+        tempLlabel->setPixmap(QPixmap(QString::fromUtf8("helpdesk-baner.png")));
+        tempLlabel->setScaledContents(false);
         tempLlabel->setAlignment(Qt::AlignCenter);
 
         gridLayout->addWidget(tempLlabel, 0, 0, 1, 1);
@@ -99,7 +108,7 @@ public:
         actionAbout->setText(QCoreApplication::translate("MainWindow", "About", nullptr));
         actionShow_basic_report->setText(QCoreApplication::translate("MainWindow", "Show basic report", nullptr));
         actionShow_advanced_report->setText(QCoreApplication::translate("MainWindow", "Show advanced report", nullptr));
-        tempLlabel->setText(QCoreApplication::translate("MainWindow", "VERSION", nullptr));
+        tempLlabel->setText(QString());
         reportButton->setText(QCoreApplication::translate("MainWindow", "Create Case", nullptr));
         menuMore->setTitle(QCoreApplication::translate("MainWindow", "More", nullptr));
         menuReport->setTitle(QCoreApplication::translate("MainWindow", "Report", nullptr));

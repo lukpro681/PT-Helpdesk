@@ -15,6 +15,8 @@ reportDialog::~reportDialog()
     delete ui;
 }
 
+
+
 void reportDialog::on_pushButton_clicked()
 {
     if(ui->srButton->isChecked() || ui->incButton->isChecked() || ui->secIncButton->isChecked())

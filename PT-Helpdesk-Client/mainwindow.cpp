@@ -27,8 +27,8 @@ MainWindow::MainWindow(QWidget *parent)
         }
     }
     else ui->setupUi(this);
-    ui->tempLlabel->clear();
-    ui->tempLlabel->setText(qApp->applicationName() + " " + qApp->applicationVersion());
+   // ui->tempLlabel->clear();
+   // ui->tempLlabel->setText(qApp->applicationName() + " " + qApp->applicationVersion());
 
 }
 
@@ -64,6 +64,8 @@ void MainWindow::on_actionShow_basic_report_triggered()
 
 void MainWindow::on_actionShow_advanced_report_triggered()
 {
-
+    QProcess process;
+    process.start("msinfo32.exe");
+    process.waitForFinished();
 }
 

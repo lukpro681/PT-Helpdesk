@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     a.setApplicationName("PT Helpdesk - Client");
     a.setApplicationDisplayName("PT Helpdesk - Client");
     a.setDesktopFileName("PT Helpdesk - Client");
-    a.setApplicationVersion("0.1.0");
+    a.setApplicationVersion("0.3.1");
 
 
 

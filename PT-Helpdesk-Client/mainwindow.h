@@ -7,6 +7,7 @@
 #include <QVersionNumber>
 #include <QDir>
 #include <QStandardPaths>
+#include <QProcess>
 #include "reportdialog.h"
 #include "reportview.h"
 

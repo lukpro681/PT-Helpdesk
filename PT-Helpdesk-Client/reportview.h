@@ -15,11 +15,15 @@ class reportView : public QDialog
 public:
     explicit reportView(QWidget *parent = nullptr);
     ~reportView();
+    void getInformation();
+
 
 private slots:
 
 
     void on_buttonBox_accepted();
+
+    void on_pushButton_clicked();
 
 private:
     Ui::reportView *ui;
