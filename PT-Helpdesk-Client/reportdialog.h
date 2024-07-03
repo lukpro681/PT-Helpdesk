@@ -2,6 +2,9 @@
 #define REPORTDIALOG_H
 
 #include <QDialog>
+#include <QFile>
+#include <QFileDialog>
+#include <QTextStream>
 #include <QTcpSocket>
 #include <QUdpSocket>
 #include <QMessageBox>
@@ -27,9 +30,12 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_addOptionalReport_clicked();
+
 private:
     QTcpSocket* tcpSocket;
     Ui::reportDialog *ui;
+    QString systemInfo;
 };
 
 #endif // REPORTDIALOG_H

@@ -18,7 +18,7 @@ reportView::~reportView()
 
 void reportView::getInformation()
 {
-    QString info;
+
     QString OS = QSysInfo::productType();
     QString kernelType = QSysInfo::kernelType();
     QString NT_ver = QSysInfo::kernelVersion();
@@ -55,8 +55,49 @@ void reportView::on_buttonBox_accepted()
 }
 
 
-void reportView::on_pushButton_clicked()
-{
 
+
+
+void reportView::on_saveInfoButton_clicked()
+{
+    QString filePath = QFileDialog::getSaveFileName(this, tr("Save as..."), QDir::homePath(), tr("PC Diagnostic Center files (*.pcdiag)"));
+
+    QFile file(filePath);
+
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        qDebug() << "Cannot write file";
+    } else {
+        QTextStream out(&file);
+        out << info;
+
+        file.close();
+
+        qDebug() << filePath << " wrote successfuly";
+    }
 }
+
+
+
+// {
+//     QString filePath = QFileDialog::getSaveFileName(this, tr("Save as..."), QDir::homePath(), tr("PC Diagnostic Center files (*.pcdiag)"));
+
+//     if(!filePath.isEmpty()) {
+//         QProcess process;
+//         QStringList arguments;
+//         arguments << "echo" << info << ">>" << filePath;
+
+//         process.start("cmd", arguments);
+//         if (!process.waitForStarted())
+//             throw QString(tr("Error: Failed to Initiate writing process."));
+
+//         if (!process.waitForFinished(-1))
+//             throw QString(tr("Error: Write process timed out."));
+
+//         if (process.exitCode() != 0)
+//             throw QString(tr("Error: Failed to Write Data."));
+//     } else {
+//         throw QString(tr("Error: Please select input file!"));
+//     }
+// }
 

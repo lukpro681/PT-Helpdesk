@@ -38,15 +38,19 @@ public:
     QLabel *infoLabel2;
     QTextEdit *descText;
     QLabel *infoLabel3;
-    QDialogButtonBox *buttonBox;
     QLineEdit *sendToText;
+    QGroupBox *groupBox_2;
+    QHBoxLayout *horizontalLayout_4;
+    QPushButton *addOptionalReport;
+    QLabel *optionalLabel;
     QPushButton *pushButton;
+    QDialogButtonBox *buttonBox;
 
     void setupUi(QDialog *reportDialog)
     {
         if (reportDialog->objectName().isEmpty())
             reportDialog->setObjectName("reportDialog");
-        reportDialog->resize(543, 625);
+        reportDialog->resize(543, 623);
         reportDialog->setMinimumSize(QSize(543, 623));
         reportDialog->setMaximumSize(QSize(16777215, 625));
         formLayout = new QFormLayout(reportDialog);
@@ -90,7 +94,7 @@ public:
 
         descText = new QTextEdit(reportDialog);
         descText->setObjectName("descText");
-        descText->setMinimumSize(QSize(0, 375));
+        descText->setMinimumSize(QSize(0, 310));
 
         formLayout->setWidget(3, QFormLayout::SpanningRole, descText);
 
@@ -98,24 +102,45 @@ public:
         infoLabel3->setObjectName("infoLabel3");
         infoLabel3->setMaximumSize(QSize(16777215, 30));
 
-        formLayout->setWidget(4, QFormLayout::LabelRole, infoLabel3);
+        formLayout->setWidget(7, QFormLayout::LabelRole, infoLabel3);
+
+        sendToText = new QLineEdit(reportDialog);
+        sendToText->setObjectName("sendToText");
+
+        formLayout->setWidget(8, QFormLayout::SpanningRole, sendToText);
+
+        groupBox_2 = new QGroupBox(reportDialog);
+        groupBox_2->setObjectName("groupBox_2");
+        QFont font1;
+        font1.setKerning(true);
+        groupBox_2->setFont(font1);
+        horizontalLayout_4 = new QHBoxLayout(groupBox_2);
+        horizontalLayout_4->setObjectName("horizontalLayout_4");
+        addOptionalReport = new QPushButton(groupBox_2);
+        addOptionalReport->setObjectName("addOptionalReport");
+        addOptionalReport->setMaximumSize(QSize(125, 16777215));
+
+        horizontalLayout_4->addWidget(addOptionalReport);
+
+        optionalLabel = new QLabel(groupBox_2);
+        optionalLabel->setObjectName("optionalLabel");
+
+        horizontalLayout_4->addWidget(optionalLabel);
+
+
+        formLayout->setWidget(10, QFormLayout::SpanningRole, groupBox_2);
+
+        pushButton = new QPushButton(reportDialog);
+        pushButton->setObjectName("pushButton");
+
+        formLayout->setWidget(11, QFormLayout::LabelRole, pushButton);
 
         buttonBox = new QDialogButtonBox(reportDialog);
         buttonBox->setObjectName("buttonBox");
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel);
 
-        formLayout->setWidget(8, QFormLayout::FieldRole, buttonBox);
-
-        sendToText = new QLineEdit(reportDialog);
-        sendToText->setObjectName("sendToText");
-
-        formLayout->setWidget(5, QFormLayout::SpanningRole, sendToText);
-
-        pushButton = new QPushButton(reportDialog);
-        pushButton->setObjectName("pushButton");
-
-        formLayout->setWidget(8, QFormLayout::LabelRole, pushButton);
+        formLayout->setWidget(11, QFormLayout::FieldRole, buttonBox);
 
 
         retranslateUi(reportDialog);
@@ -136,6 +161,9 @@ public:
         infoLabel2->setText(QCoreApplication::translate("reportDialog", "Describe the case", nullptr));
         infoLabel3->setText(QCoreApplication::translate("reportDialog", "Send to:", nullptr));
         sendToText->setText(QString());
+        groupBox_2->setTitle(QString());
+        addOptionalReport->setText(QCoreApplication::translate("reportDialog", "Attach basic report", nullptr));
+        optionalLabel->setText(QCoreApplication::translate("reportDialog", "Optional", nullptr));
         pushButton->setText(QCoreApplication::translate("reportDialog", "Send", nullptr));
     } // retranslateUi
 

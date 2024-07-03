@@ -27,7 +27,7 @@ class Ui_reportView
 public:
     QGridLayout *gridLayout;
     QLabel *infoLabel;
-    QPushButton *pushButton;
+    QPushButton *saveInfoButton;
     QLabel *logoLabel;
     QDialogButtonBox *buttonBox;
     QTextBrowser *textBrowser;
@@ -51,11 +51,11 @@ public:
 
         gridLayout->addWidget(infoLabel, 1, 2, 1, 1);
 
-        pushButton = new QPushButton(reportView);
-        pushButton->setObjectName("pushButton");
-        pushButton->setMaximumSize(QSize(100, 16777215));
+        saveInfoButton = new QPushButton(reportView);
+        saveInfoButton->setObjectName("saveInfoButton");
+        saveInfoButton->setMaximumSize(QSize(100, 16777215));
 
-        gridLayout->addWidget(pushButton, 3, 0, 1, 1);
+        gridLayout->addWidget(saveInfoButton, 3, 0, 1, 1);
 
         logoLabel = new QLabel(reportView);
         logoLabel->setObjectName("logoLabel");
@@ -94,7 +94,7 @@ public:
     {
         reportView->setWindowTitle(QCoreApplication::translate("reportView", "Dialog", nullptr));
         infoLabel->setText(QCoreApplication::translate("reportView", "System information", nullptr));
-        pushButton->setText(QCoreApplication::translate("reportView", "Save Info", nullptr));
+        saveInfoButton->setText(QCoreApplication::translate("reportView", "Save Info", nullptr));
         logoLabel->setText(QString());
     } // retranslateUi
 

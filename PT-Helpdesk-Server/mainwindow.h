@@ -18,6 +18,8 @@
 #include <QUdpSocket>
 #include <QHostInfo>
 #include <QSysInfo>
+#include "detailsdialog.h"
+
 
 
 QT_BEGIN_NAMESPACE
@@ -38,6 +40,7 @@ public:
     }
 
     QList<QString>getCases();
+    void addCaseToTable(const QString &sender, const QString &type, const QString &desc);
 
 protected:
     void closeEvent(QCloseEvent *event) override;
@@ -53,6 +56,11 @@ private slots:
     void closeTray();
     void captureData();
     void showMessage(const QString& sender, const QString& type, const QString& desc);
+
+    void on_activeCaseWidget_cellClicked(int row, int column);
+
+    void onCloseCaseRequest(int row, const QString &from, const QString &type, const QString &description);
+
 
 signals:
     void messageReceived(const QString& sender, const QString& type, const QString& desc);

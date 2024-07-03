@@ -41,7 +41,7 @@ static constexpr auto qt_meta_stringdata_CLASSreportViewENDCLASS = QtMocHelpers:
     "reportView",
     "on_buttonBox_accepted",
     "",
-    "on_pushButton_clicked"
+    "on_saveInfoButton_clicked"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSreportViewENDCLASS_t {
@@ -49,7 +49,7 @@ struct qt_meta_stringdata_CLASSreportViewENDCLASS_t {
     char stringdata0[11];
     char stringdata1[22];
     char stringdata2[1];
-    char stringdata3[22];
+    char stringdata3[26];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSreportViewENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -58,12 +58,12 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSreportViewENDCLASS_t qt_meta_st
         QT_MOC_LITERAL(0, 10),  // "reportView"
         QT_MOC_LITERAL(11, 21),  // "on_buttonBox_accepted"
         QT_MOC_LITERAL(33, 0),  // ""
-        QT_MOC_LITERAL(34, 21)   // "on_pushButton_clicked"
+        QT_MOC_LITERAL(34, 25)   // "on_saveInfoButton_clicked"
     },
     "reportView",
     "on_buttonBox_accepted",
     "",
-    "on_pushButton_clicked"
+    "on_saveInfoButton_clicked"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -104,7 +104,7 @@ Q_CONSTINIT const QMetaObject reportView::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<reportView, std::true_type>,
         // method 'on_buttonBox_accepted'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_pushButton_clicked'
+        // method 'on_saveInfoButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -117,7 +117,7 @@ void reportView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         (void)_t;
         switch (_id) {
         case 0: _t->on_buttonBox_accepted(); break;
-        case 1: _t->on_pushButton_clicked(); break;
+        case 1: _t->on_saveInfoButton_clicked(); break;
         default: ;
         }
     }

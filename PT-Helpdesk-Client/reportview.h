@@ -3,6 +3,10 @@
 
 #include <QDialog>
 #include <QAbstractButton>
+#include <QFile>
+#include <QFileDialog>
+#include <QProcess>
+#include <QTextStream>
 
 namespace Ui {
 class reportView;
@@ -23,10 +27,11 @@ private slots:
 
     void on_buttonBox_accepted();
 
-    void on_pushButton_clicked();
+    void on_saveInfoButton_clicked();
 
 private:
     Ui::reportView *ui;
+    QString info;
 };
 
 #endif // REPORTVIEW_H

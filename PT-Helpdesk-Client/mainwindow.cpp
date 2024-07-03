@@ -27,8 +27,6 @@ MainWindow::MainWindow(QWidget *parent)
         }
     }
     else ui->setupUi(this);
-   // ui->tempLlabel->clear();
-   // ui->tempLlabel->setText(qApp->applicationName() + " " + qApp->applicationVersion());
 
 }
 

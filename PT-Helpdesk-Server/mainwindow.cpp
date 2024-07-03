@@ -7,6 +7,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    ui->activeCaseWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->completeCaseWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
     connect(this, SIGNAL(messageReceived(QString,QString,QString)),this,SLOT(showMessage(QString,QString,QString)));
     udpSocket = new QUdpSocket(this);
     udpSocket->bind(4830);
@@ -33,6 +36,7 @@ MainWindow::MainWindow(QWidget *parent)
     trayIcon->setContextMenu(menuTray);
     trayIcon->show();
 
+
     connect(qApp, SIGNAL(aboutToQuit()),this,SLOT(onAboutToQuit()));
 
 }
@@ -44,6 +48,18 @@ MainWindow::~MainWindow()
 
 QList<QString> MainWindow::getCases(){
     return messages;
+}
+
+void MainWindow::addCaseToTable(const QString &sender, const QString &type, const QString &desc)
+{
+
+    int row = ui->activeCaseWidget->rowCount();
+    ui->activeCaseWidget->insertRow(row);
+    ui->activeCaseWidget->setItem(row, 0, new QTableWidgetItem(type));
+    ui->activeCaseWidget->setItem(row, 1, new QTableWidgetItem(sender));
+    ui->activeCaseWidget->setItem(row, 2, new QTableWidgetItem(tr("Open")));
+    ui->activeCaseWidget->setItem(row, 3, new QTableWidgetItem(desc));
+
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -161,6 +177,8 @@ void MainWindow::showMessage(const QString &sender, const QString &type, const Q
     qDebug() << "Type: " << type;
     qDebug() << "Description: " << desc;
 
+    addCaseToTable(sender, type, desc);
+
     QString Case = "From: " + sender + "\n"
                                             "Type: " + type + "\n"
                                   "Description: " + desc;
@@ -178,3 +196,31 @@ void MainWindow::showMessage(const QString &sender, const QString &type, const Q
 
 
 
+
+void MainWindow::on_activeCaseWidget_cellClicked(int row, int column)
+{
+    QTableWidget *table = qobject_cast<QTableWidget*>(sender());
+    if (!table) return;
+
+    QString type = table->item(row, 0)->text();
+    QString from = table->item(row, 1)->text();
+    QString status = table->item(row, 2)->text();
+    QString description = table->item(row, 3)->text();
+
+    DetailsDialog *dialog = new DetailsDialog(row, from, type, status, description, this);
+    connect(dialog, &DetailsDialog::closeCaseRequest, this, &MainWindow::onCloseCaseRequest);
+    dialog->exec();
+}
+
+void MainWindow::onCloseCaseRequest(int row, const QString &from, const QString &type, const QString &description)
+{
+    qDebug() << "Closing case from row:" << row;
+    int closedRow = ui->completeCaseWidget->rowCount();
+    ui->completeCaseWidget->insertRow(closedRow);
+    ui->completeCaseWidget->setItem(closedRow, 0, new QTableWidgetItem(type));
+    ui->completeCaseWidget->setItem(closedRow, 1, new QTableWidgetItem(from));
+    ui->completeCaseWidget->setItem(closedRow, 2, new QTableWidgetItem(tr("Closed")));
+    ui->completeCaseWidget->setItem(closedRow, 3, new QTableWidgetItem(description));
+
+    ui->activeCaseWidget->removeRow(row);
+}

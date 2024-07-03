@@ -19,6 +19,8 @@ reportDialog::~reportDialog()
 
 void reportDialog::on_pushButton_clicked()
 {
+
+
     if(ui->srButton->isChecked() || ui->incButton->isChecked() || ui->secIncButton->isChecked())
     {
         QString recipient = ui->sendToText->text();
@@ -28,6 +30,7 @@ void reportDialog::on_pushButton_clicked()
             QString UserInfo = QHostInfo::localHostName();
             QString message;
 
+
             if(ui->srButton->isChecked()) {
                 message = tr("Service Request");
             } else if(ui->incButton->isChecked()) {
@@ -36,7 +39,7 @@ void reportDialog::on_pushButton_clicked()
                 message = tr("Security Incident");
             }
 
-            message += "\n" + UserInfo + "\n" + ui->descText->toPlainText() + "\n";
+            message += "\n" + UserInfo + "\n" + ui->descText->toPlainText() + "\n" + systemInfo;
 
             tcpSocket->connectToHost(recipient,4829);
 
@@ -63,5 +66,18 @@ void reportDialog::on_pushButton_clicked()
     } else {
         QMessageBox::critical(this,tr("Error"), tr("You have to choose case type."));
     }
+}
+
+
+
+
+void reportDialog::on_addOptionalReport_clicked()
+{
+    QString attachment = QFileDialog::getOpenFileName(this, tr("Select report file..."),QDir::homePath(), tr("PC Diagnostic Center files (*.pcdiag)"));
+    QFile f(attachment);
+    if (!f.open(QFile::ReadOnly | QFile::Text)) throw new QString("");
+    QTextStream in(&f);
+    systemInfo = in.readAll();
+    ui->optionalLabel->setText(tr("added file: ") + f.fileName());
 }
 

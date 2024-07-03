@@ -12,12 +12,13 @@
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -31,9 +32,9 @@ public:
     QVBoxLayout *verticalLayout;
     QLabel *versionLabel;
     QLabel *infoLabel;
-    QListWidget *activeCaseWidget;
+    QTableWidget *activeCaseWidget;
     QLabel *infoLabel2;
-    QListWidget *completeCaseWidget;
+    QTableWidget *completeCaseWidget;
     QMenuBar *menubar;
     QMenu *menuMore;
     QStatusBar *statusbar;
@@ -67,8 +68,28 @@ public:
 
         verticalLayout->addWidget(infoLabel);
 
-        activeCaseWidget = new QListWidget(centralwidget);
+        activeCaseWidget = new QTableWidget(centralwidget);
+        if (activeCaseWidget->columnCount() < 4)
+            activeCaseWidget->setColumnCount(4);
+        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        activeCaseWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
+        activeCaseWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
+        activeCaseWidget->setHorizontalHeaderItem(2, __qtablewidgetitem2);
+        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
+        activeCaseWidget->setHorizontalHeaderItem(3, __qtablewidgetitem3);
         activeCaseWidget->setObjectName("activeCaseWidget");
+        activeCaseWidget->setSortingEnabled(true);
+        activeCaseWidget->setColumnCount(4);
+        activeCaseWidget->horizontalHeader()->setCascadingSectionResizes(false);
+        activeCaseWidget->horizontalHeader()->setMinimumSectionSize(35);
+        activeCaseWidget->horizontalHeader()->setDefaultSectionSize(100);
+        activeCaseWidget->horizontalHeader()->setProperty("showSortIndicator", QVariant(true));
+        activeCaseWidget->horizontalHeader()->setStretchLastSection(true);
+        activeCaseWidget->verticalHeader()->setCascadingSectionResizes(false);
+        activeCaseWidget->verticalHeader()->setProperty("showSortIndicator", QVariant(false));
+        activeCaseWidget->verticalHeader()->setStretchLastSection(false);
 
         verticalLayout->addWidget(activeCaseWidget);
 
@@ -77,8 +98,19 @@ public:
 
         verticalLayout->addWidget(infoLabel2);
 
-        completeCaseWidget = new QListWidget(centralwidget);
+        completeCaseWidget = new QTableWidget(centralwidget);
+        if (completeCaseWidget->columnCount() < 4)
+            completeCaseWidget->setColumnCount(4);
+        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
+        completeCaseWidget->setHorizontalHeaderItem(0, __qtablewidgetitem4);
+        QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
+        completeCaseWidget->setHorizontalHeaderItem(1, __qtablewidgetitem5);
+        QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
+        completeCaseWidget->setHorizontalHeaderItem(2, __qtablewidgetitem6);
+        QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
+        completeCaseWidget->setHorizontalHeaderItem(3, __qtablewidgetitem7);
         completeCaseWidget->setObjectName("completeCaseWidget");
+        completeCaseWidget->horizontalHeader()->setStretchLastSection(true);
 
         verticalLayout->addWidget(completeCaseWidget);
 
@@ -107,7 +139,23 @@ public:
         actionAbout->setText(QCoreApplication::translate("MainWindow", "About", nullptr));
         versionLabel->setText(QString());
         infoLabel->setText(QCoreApplication::translate("MainWindow", "Active Cases", nullptr));
+        QTableWidgetItem *___qtablewidgetitem = activeCaseWidget->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "Type", nullptr));
+        QTableWidgetItem *___qtablewidgetitem1 = activeCaseWidget->horizontalHeaderItem(1);
+        ___qtablewidgetitem1->setText(QCoreApplication::translate("MainWindow", "From", nullptr));
+        QTableWidgetItem *___qtablewidgetitem2 = activeCaseWidget->horizontalHeaderItem(2);
+        ___qtablewidgetitem2->setText(QCoreApplication::translate("MainWindow", "Status", nullptr));
+        QTableWidgetItem *___qtablewidgetitem3 = activeCaseWidget->horizontalHeaderItem(3);
+        ___qtablewidgetitem3->setText(QCoreApplication::translate("MainWindow", "Description", nullptr));
         infoLabel2->setText(QCoreApplication::translate("MainWindow", "Completed Cases", nullptr));
+        QTableWidgetItem *___qtablewidgetitem4 = completeCaseWidget->horizontalHeaderItem(0);
+        ___qtablewidgetitem4->setText(QCoreApplication::translate("MainWindow", "Type", nullptr));
+        QTableWidgetItem *___qtablewidgetitem5 = completeCaseWidget->horizontalHeaderItem(1);
+        ___qtablewidgetitem5->setText(QCoreApplication::translate("MainWindow", "From", nullptr));
+        QTableWidgetItem *___qtablewidgetitem6 = completeCaseWidget->horizontalHeaderItem(2);
+        ___qtablewidgetitem6->setText(QCoreApplication::translate("MainWindow", "Status", nullptr));
+        QTableWidgetItem *___qtablewidgetitem7 = completeCaseWidget->horizontalHeaderItem(3);
+        ___qtablewidgetitem7->setText(QCoreApplication::translate("MainWindow", "Description", nullptr));
         menuMore->setTitle(QCoreApplication::translate("MainWindow", "More", nullptr));
     } // retranslateUi
 
