@@ -11,6 +11,10 @@
 #include <QHostInfo>
 #include <QHostAddress>
 #include <QSysInfo>
+#include <QTableWidget>
+#include <QCheckBox>
+#include <QThread>
+#include <QProcess>
 
 namespace Ui {
 class reportDialog;
@@ -32,10 +36,59 @@ private slots:
 
     void on_addOptionalReport_clicked();
 
+    void on_findButton_clicked();
+
+    void on_addHostsButton_clicked();
+
 private:
     QTcpSocket* tcpSocket;
     Ui::reportDialog *ui;
     QString systemInfo;
+
+    void sendMessagesToHosts(const QList<QString> &hosts);
+    void findHosts();
+    void updateHostStatus(const QString &host, QTableWidgetItem *statusItem);
+};
+
+
+class MessageSender : public QObject
+{
+    Q_OBJECT
+
+public:
+    MessageSender(const QString &host, QObject *parent = nullptr);
+
+public slots:
+    void process();
+
+signals:
+    void finished();
+
+private:
+    QString host;
+};
+
+
+
+
+class PingWorker : public QObject
+{
+    Q_OBJECT
+
+public:
+    PingWorker(const QString &host, QTableWidgetItem *statusItem, QObject *parent = nullptr);
+
+public slots:
+    void process();
+
+signals:
+    void finished();
+
+private:
+    QString host;
+    QTableWidgetItem *statusItem;
 };
 
 #endif // REPORTDIALOG_H
+
+

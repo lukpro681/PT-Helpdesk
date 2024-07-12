@@ -6,26 +6,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>543</width>
+    <width>1051</width>
     <height>623</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>543</width>
+    <width>1051</width>
     <height>623</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>16777215</width>
-    <height>625</height>
+    <width>1051</width>
+    <height>623</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QFormLayout" name="formLayout">
+  <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QLabel" name="infoLabel">
      <property name="font">
@@ -38,7 +38,14 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2">
+   <item row="7" column="1">
+    <widget class="QPushButton" name="addHostsButton">
+     <property name="text">
+      <string>Add Hosts</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" rowspan="2" colspan="2">
     <widget class="QGroupBox" name="groupBox">
      <property name="maximumSize">
       <size>
@@ -74,7 +81,30 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item row="9" column="1">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel</set>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0">
+    <widget class="QPushButton" name="pushButton">
+     <property name="maximumSize">
+      <size>
+       <width>100</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Send</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
     <widget class="QLabel" name="infoLabel2">
      <property name="maximumSize">
       <size>
@@ -87,7 +117,33 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2">
+   <item row="5" column="1">
+    <widget class="QPushButton" name="findButton">
+     <property name="text">
+      <string>Find Administrators</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QTableWidget" name="tableWidget">
+     <column>
+      <property name="text">
+       <string>Nowa kolumna</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Host</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Status</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="4" column="0" rowspan="4">
     <widget class="QTextEdit" name="descText">
      <property name="minimumSize">
       <size>
@@ -97,7 +153,7 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="0">
+   <item row="3" column="1">
     <widget class="QLabel" name="infoLabel3">
      <property name="maximumSize">
       <size>
@@ -110,14 +166,14 @@
      </property>
     </widget>
    </item>
-   <item row="8" column="0" colspan="2">
+   <item row="4" column="1">
     <widget class="QLineEdit" name="sendToText">
      <property name="text">
       <string/>
      </property>
     </widget>
    </item>
-   <item row="10" column="0" colspan="2">
+   <item row="8" column="0" colspan="2">
     <widget class="QGroupBox" name="groupBox_2">
      <property name="font">
       <font>
@@ -143,29 +199,25 @@
       </item>
       <item>
        <widget class="QLabel" name="optionalLabel">
+        <property name="maximumSize">
+         <size>
+          <width>350</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="text">
          <string>Optional</string>
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Added Hosts:</string>
+        </property>
+       </widget>
+      </item>
      </layout>
-    </widget>
-   </item>
-   <item row="11" column="0">
-    <widget class="QPushButton" name="pushButton">
-     <property name="text">
-      <string>Send</string>
-     </property>
-    </widget>
-   </item>
-   <item row="11" column="1">
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel</set>
-     </property>
     </widget>
    </item>
   </layout>
