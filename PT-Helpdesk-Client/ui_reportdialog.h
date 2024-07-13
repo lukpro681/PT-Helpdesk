@@ -32,7 +32,6 @@ class Ui_reportDialog
 public:
     QGridLayout *gridLayout;
     QLabel *infoLabel;
-    QPushButton *addHostsButton;
     QGroupBox *groupBox;
     QHBoxLayout *horizontalLayout;
     QRadioButton *srButton;
@@ -50,7 +49,6 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QPushButton *addOptionalReport;
     QLabel *optionalLabel;
-    QLabel *label;
 
     void setupUi(QDialog *reportDialog)
     {
@@ -68,11 +66,6 @@ public:
         infoLabel->setFont(font);
 
         gridLayout->addWidget(infoLabel, 0, 0, 1, 1);
-
-        addHostsButton = new QPushButton(reportDialog);
-        addHostsButton->setObjectName("addHostsButton");
-
-        gridLayout->addWidget(addHostsButton, 7, 1, 1, 1);
 
         groupBox = new QGroupBox(reportDialog);
         groupBox->setObjectName("groupBox");
@@ -131,6 +124,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem2);
         tableWidget->setObjectName("tableWidget");
+        tableWidget->horizontalHeader()->setDefaultSectionSize(160);
 
         gridLayout->addWidget(tableWidget, 6, 1, 1, 1);
 
@@ -166,14 +160,9 @@ public:
 
         optionalLabel = new QLabel(groupBox_2);
         optionalLabel->setObjectName("optionalLabel");
-        optionalLabel->setMaximumSize(QSize(350, 16777215));
+        optionalLabel->setMaximumSize(QSize(16777215, 16777215));
 
         horizontalLayout_4->addWidget(optionalLabel);
-
-        label = new QLabel(groupBox_2);
-        label->setObjectName("label");
-
-        horizontalLayout_4->addWidget(label);
 
 
         gridLayout->addWidget(groupBox_2, 8, 0, 1, 2);
@@ -190,26 +179,24 @@ public:
     {
         reportDialog->setWindowTitle(QCoreApplication::translate("reportDialog", "Dialog", nullptr));
         infoLabel->setText(QCoreApplication::translate("reportDialog", "Choose the case Type", nullptr));
-        addHostsButton->setText(QCoreApplication::translate("reportDialog", "Add Hosts", nullptr));
         groupBox->setTitle(QString());
         srButton->setText(QCoreApplication::translate("reportDialog", "Service Request (SR)", nullptr));
         incButton->setText(QCoreApplication::translate("reportDialog", "Incident (INC)", nullptr));
         secIncButton->setText(QCoreApplication::translate("reportDialog", "Security Incident (SEC INC)", nullptr));
         pushButton->setText(QCoreApplication::translate("reportDialog", "Send", nullptr));
         infoLabel2->setText(QCoreApplication::translate("reportDialog", "Describe the case", nullptr));
-        findButton->setText(QCoreApplication::translate("reportDialog", "Find Administrators", nullptr));
+        findButton->setText(QCoreApplication::translate("reportDialog", "Refresh list", nullptr));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QCoreApplication::translate("reportDialog", "Nowa kolumna", nullptr));
+        ___qtablewidgetitem->setText(QCoreApplication::translate("reportDialog", "Host", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QCoreApplication::translate("reportDialog", "Host", nullptr));
+        ___qtablewidgetitem1->setText(QCoreApplication::translate("reportDialog", "Status", nullptr));
         QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QCoreApplication::translate("reportDialog", "Status", nullptr));
+        ___qtablewidgetitem2->setText(QCoreApplication::translate("reportDialog", "Select", nullptr));
         infoLabel3->setText(QCoreApplication::translate("reportDialog", "Send to:", nullptr));
         sendToText->setText(QString());
         groupBox_2->setTitle(QString());
         addOptionalReport->setText(QCoreApplication::translate("reportDialog", "Attach basic report", nullptr));
         optionalLabel->setText(QCoreApplication::translate("reportDialog", "Optional", nullptr));
-        label->setText(QCoreApplication::translate("reportDialog", "Added Hosts:", nullptr));
     } // retranslateUi
 
 };

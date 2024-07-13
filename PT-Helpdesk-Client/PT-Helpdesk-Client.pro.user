@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 11.0.3, 2024-07-12T21:51:38. -->
+<!-- Written by QtCreator 11.0.3, 2024-07-13T02:53:56. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -136,7 +136,7 @@
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">D:\DevHomeRepos\PT-Helpdesk\PT-Helpdesk-Client</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">D:/DevHomeRepos/PT-Helpdesk/build-PT-Helpdesk-Client-Desktop_Qt_6_5_3_MinGW_64_bit-Release</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">D:/DevHomeRepos/PT-Helpdesk/PT-Helpdesk-Client</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>

@@ -30,6 +30,7 @@ public:
     void verify(QString,QString,QString);
     ~reportDialog();
 
+
 private slots:
 
     void on_pushButton_clicked();
@@ -38,7 +39,6 @@ private slots:
 
     void on_findButton_clicked();
 
-    void on_addHostsButton_clicked();
 
 private:
     QTcpSocket* tcpSocket;
@@ -49,25 +49,6 @@ private:
     void findHosts();
     void updateHostStatus(const QString &host, QTableWidgetItem *statusItem);
 };
-
-
-class MessageSender : public QObject
-{
-    Q_OBJECT
-
-public:
-    MessageSender(const QString &host, QObject *parent = nullptr);
-
-public slots:
-    void process();
-
-signals:
-    void finished();
-
-private:
-    QString host;
-};
-
 
 
 

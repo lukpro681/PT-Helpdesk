@@ -31,14 +31,14 @@ void reportView::getInformation()
 
     info +=
         "------------------------- OS Information -------------------------\n\n"
-     + tr("Product type:\t\t") + OS + "\n\n"
-     + tr("Kernel Type:\t\t") +  kernelType + "\n\n"
-            + tr("NT Version:\t\t") +  NT_ver + "\n\n"
-     + tr("Build:\t\t") +  build + "\n\n"
-     + tr("Build CPU Architekture:\t") +  CPU_Architecture + "\n\n"
-     + tr("Current CPU Architekture:\t") +  currentCPU_Architecture + "\n\n"
-     + tr("Host Name:\t\t") +  hostName + "\n\n"
-            + tr("Machine ID:\t\t") +  machineId;
+     + tr("Product type:") + "\t\t" + OS + "\n\n"
+     + tr("Kernel Type:")+ "\t\t" +  kernelType + "\n\n"
+            + tr("NT Version:")+ "\t\t" +  NT_ver + "\n\n"
+     + tr("Build:")+ "\t\t" +  build + "\n\n"
+     + tr("Build CPU Architekture:")+ "\t" +  CPU_Architecture + "\n\n"
+     + tr("Current CPU Architekture:")+ "\t" +  currentCPU_Architecture + "\n\n"
+     + tr("Host Name:") + "\t\t" +  hostName + "\n\n"
+            + tr("Machine ID:") + "\t\t" +  machineId;
 
     ui->textBrowser->setText(info);
 }
