@@ -101,12 +101,10 @@ void reportDialog::on_pushButton_clicked()
             }
 
         }
-        successSendCounter;
-        QString result;
-        result += tr("Successfully sent: ");
-        result +=
-        QMessageBox::information(this,tr("Sending results"), result);
-
+        if(successSendCounter > 0)
+        QMessageBox::information(this,tr("Sending result"),tr("Sent case to all selected administrators"));
+        else
+        QMessageBox::critical(this, tr("Error"), tr("Please select a recipient."));
     }
     else
     {
@@ -164,6 +162,7 @@ void reportDialog::findHosts()
             QCheckBox *checkBox = new QCheckBox();
             ui->tableWidget->setCellWidget(row, 2, checkBox);
 
+
             QThread *thread = new QThread;
             PingWorker *worker = new PingWorker(line, statusItem);
             worker->moveToThread(thread);
@@ -172,6 +171,12 @@ void reportDialog::findHosts()
             connect(worker, &PingWorker::finished, thread, &QThread::quit);
             connect(worker, &PingWorker::finished, worker, &PingWorker::deleteLater);
             connect(thread, &QThread::finished, thread, &QThread::deleteLater);
+
+            connect(worker, &PingWorker::finished, this, [=]() {
+                if (statusItem->text() == tr("Unavailable")) {
+                    checkBox->setEnabled(false); // Disable checkbox if host is unavailable
+                }
+            });
 
             thread->start();
         }
@@ -188,11 +193,12 @@ PingWorker::PingWorker(const QString &host, QTableWidgetItem *statusItem, QObjec
 void PingWorker::process()
 {
     QProcess pingProcess;
-    pingProcess.start("ping", QStringList() << "-n" << "1" << host);
+    pingProcess.start("paping", QStringList() << host << "-p" << "4829" << "-c" << "1");
+    qDebug() << "ping", QStringList() << "-n" << "1" << host;
     pingProcess.waitForFinished();
     QString output = pingProcess.readAllStandardOutput();
 
-    if (output.contains("time")) {
+    if (output.contains("protocol")) {
         statusItem->setText(tr("Available"));
     } else {
         statusItem->setText(tr("Unavailable"));

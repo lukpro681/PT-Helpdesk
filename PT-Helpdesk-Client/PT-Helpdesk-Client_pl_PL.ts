@@ -67,12 +67,12 @@
 <context>
     <name>PingWorker</name>
     <message>
-        <location filename="reportdialog.cpp" line="182"/>
+        <location filename="reportdialog.cpp" line="200"/>
         <source>Available</source>
         <translation>Administrator Dostępny</translation>
     </message>
     <message>
-        <location filename="reportdialog.cpp" line="184"/>
+        <location filename="reportdialog.cpp" line="202"/>
         <source>Unavailable</source>
         <translation>Brak połączenia</translation>
     </message>
@@ -158,92 +158,103 @@
         <translation>Opcjonalne</translation>
     </message>
     <message>
-        <location filename="reportdialog.cpp" line="56"/>
+        <location filename="reportdialog.cpp" line="51"/>
         <source>Service Request</source>
         <translation>Service Request</translation>
     </message>
     <message>
-        <location filename="reportdialog.cpp" line="58"/>
+        <location filename="reportdialog.cpp" line="53"/>
         <source>Incident</source>
         <translation>Incident</translation>
     </message>
     <message>
-        <location filename="reportdialog.cpp" line="60"/>
+        <location filename="reportdialog.cpp" line="55"/>
         <source>Security Incident</source>
         <translation>Security Incident</translation>
     </message>
     <message>
-        <location filename="reportdialog.cpp" line="89"/>
         <source>Success</source>
-        <translation>Sukces</translation>
+        <translation type="vanished">Sukces</translation>
     </message>
     <message>
-        <location filename="reportdialog.cpp" line="89"/>
         <source>Your case has been sent successfully</source>
-        <translation>Twoje zgłoszenie zostało wysłane pomyślnie</translation>
+        <translation type="vanished">Twoje zgłoszenie zostało wysłane pomyślnie</translation>
     </message>
     <message>
-        <location filename="reportdialog.cpp" line="44"/>
-        <location filename="reportdialog.cpp" line="94"/>
-        <location filename="reportdialog.cpp" line="99"/>
-        <location filename="reportdialog.cpp" line="132"/>
+        <location filename="reportdialog.cpp" line="92"/>
+        <location filename="reportdialog.cpp" line="110"/>
+        <location filename="reportdialog.cpp" line="143"/>
         <source>Error</source>
         <translation>Błąd</translation>
     </message>
     <message>
-        <location filename="reportdialog.cpp" line="38"/>
+        <location filename="reportdialog.cpp" line="41"/>
         <source>Available</source>
         <translation>Administrator Dostępny</translation>
     </message>
     <message>
-        <location filename="reportdialog.cpp" line="44"/>
         <source>Cannot send to: </source>
-        <translation>Nie można wysłać do: </translation>
+        <translation type="vanished">Nie można wysłać do: </translation>
     </message>
     <message>
-        <location filename="reportdialog.cpp" line="94"/>
+        <location filename="reportdialog.cpp" line="92"/>
         <source>Please select a recipient.</source>
         <translation>Musisz dodać odbiorcę</translation>
     </message>
     <message>
-        <location filename="reportdialog.cpp" line="99"/>
+        <location filename="reportdialog.cpp" line="105"/>
+        <source>Sending result</source>
+        <translation>Wysyłanie</translation>
+    </message>
+    <message>
+        <location filename="reportdialog.cpp" line="105"/>
+        <source>Sent case to all selected administrators</source>
+        <translation>Wysłano zgłoszenie do wybranych administratorów</translation>
+    </message>
+    <message>
+        <location filename="reportdialog.cpp" line="110"/>
         <source>You have to choose case type.</source>
         <translation>Musisz dodać rodzaj zgłoszenia</translation>
     </message>
     <message>
-        <location filename="reportdialog.cpp" line="108"/>
+        <location filename="reportdialog.cpp" line="119"/>
         <source>Select report file...</source>
         <translation>Dodaj podstawowy raport</translation>
     </message>
     <message>
-        <location filename="reportdialog.cpp" line="108"/>
+        <location filename="reportdialog.cpp" line="119"/>
         <source>PC Diagnostic Center files (*.pcdiag)</source>
         <translation>plik PC Diagnostic Center (*.pcdiag)</translation>
     </message>
     <message>
-        <location filename="reportdialog.cpp" line="111"/>
+        <location filename="reportdialog.cpp" line="122"/>
         <source>Additional report</source>
         <translation>Raport podstawowy</translation>
     </message>
     <message>
-        <location filename="reportdialog.cpp" line="111"/>
+        <location filename="reportdialog.cpp" line="122"/>
         <source>Additional report not attached.</source>
         <translation>Anulowano dołączenie raportu</translation>
     </message>
     <message>
-        <location filename="reportdialog.cpp" line="117"/>
+        <location filename="reportdialog.cpp" line="128"/>
         <source>added file: </source>
         <translation>Dodano plik:</translation>
     </message>
     <message>
-        <location filename="reportdialog.cpp" line="132"/>
+        <location filename="reportdialog.cpp" line="143"/>
         <source>Cannot open adminHosts.cfg</source>
         <translation>Nie można odczytać pliku adminHosts.cfg</translation>
     </message>
     <message>
-        <location filename="reportdialog.cpp" line="147"/>
+        <location filename="reportdialog.cpp" line="158"/>
         <source>Checking...</source>
         <translation>Nawiązywanie połączenia...</translation>
+    </message>
+    <message>
+        <location filename="reportdialog.cpp" line="175"/>
+        <source>Unavailable</source>
+        <translation>Brak połączenia</translation>
     </message>
 </context>
 <context>
