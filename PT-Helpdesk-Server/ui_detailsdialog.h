@@ -14,7 +14,8 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
-#include <QtWidgets/QFormLayout>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 
@@ -23,7 +24,7 @@ QT_BEGIN_NAMESPACE
 class Ui_DetailsDialog
 {
 public:
-    QFormLayout *formLayout;
+    QGridLayout *gridLayout;
     QLabel *infoLabel;
     QLabel *fromLabel;
     QLabel *fromResponse;
@@ -31,17 +32,19 @@ public:
     QLabel *typeResponse;
     QLabel *statusLabel;
     QLabel *statusResponse;
-    QLabel *descLabel;
-    QDialogButtonBox *buttonBox;
+    QHBoxLayout *horizontalLayout_2;
     QPushButton *closeCaseButton;
+    QPushButton *assignCaseButton;
+    QDialogButtonBox *buttonBox;
+    QLabel *descLabel;
 
     void setupUi(QDialog *DetailsDialog)
     {
         if (DetailsDialog->objectName().isEmpty())
             DetailsDialog->setObjectName("DetailsDialog");
-        DetailsDialog->resize(650, 499);
-        formLayout = new QFormLayout(DetailsDialog);
-        formLayout->setObjectName("formLayout");
+        DetailsDialog->resize(635, 501);
+        gridLayout = new QGridLayout(DetailsDialog);
+        gridLayout->setObjectName("gridLayout");
         infoLabel = new QLabel(DetailsDialog);
         infoLabel->setObjectName("infoLabel");
         infoLabel->setMaximumSize(QSize(16777215, 75));
@@ -50,58 +53,70 @@ public:
         font.setBold(true);
         infoLabel->setFont(font);
 
-        formLayout->setWidget(0, QFormLayout::LabelRole, infoLabel);
+        gridLayout->addWidget(infoLabel, 0, 0, 1, 1);
 
         fromLabel = new QLabel(DetailsDialog);
         fromLabel->setObjectName("fromLabel");
         fromLabel->setMaximumSize(QSize(16777215, 20));
 
-        formLayout->setWidget(1, QFormLayout::LabelRole, fromLabel);
+        gridLayout->addWidget(fromLabel, 1, 0, 1, 1);
 
         fromResponse = new QLabel(DetailsDialog);
         fromResponse->setObjectName("fromResponse");
 
-        formLayout->setWidget(1, QFormLayout::FieldRole, fromResponse);
+        gridLayout->addWidget(fromResponse, 1, 1, 1, 1);
 
         typeLabel = new QLabel(DetailsDialog);
         typeLabel->setObjectName("typeLabel");
         typeLabel->setMaximumSize(QSize(16777215, 20));
 
-        formLayout->setWidget(2, QFormLayout::LabelRole, typeLabel);
+        gridLayout->addWidget(typeLabel, 2, 0, 1, 1);
 
         typeResponse = new QLabel(DetailsDialog);
         typeResponse->setObjectName("typeResponse");
 
-        formLayout->setWidget(2, QFormLayout::FieldRole, typeResponse);
+        gridLayout->addWidget(typeResponse, 2, 1, 1, 1);
 
         statusLabel = new QLabel(DetailsDialog);
         statusLabel->setObjectName("statusLabel");
         statusLabel->setMaximumSize(QSize(16777215, 20));
 
-        formLayout->setWidget(3, QFormLayout::LabelRole, statusLabel);
+        gridLayout->addWidget(statusLabel, 3, 0, 1, 1);
 
         statusResponse = new QLabel(DetailsDialog);
         statusResponse->setObjectName("statusResponse");
 
-        formLayout->setWidget(3, QFormLayout::FieldRole, statusResponse);
+        gridLayout->addWidget(statusResponse, 3, 1, 1, 1);
 
-        descLabel = new QLabel(DetailsDialog);
-        descLabel->setObjectName("descLabel");
-        descLabel->setMaximumSize(QSize(16777215, 16777215));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName("horizontalLayout_2");
+        closeCaseButton = new QPushButton(DetailsDialog);
+        closeCaseButton->setObjectName("closeCaseButton");
 
-        formLayout->setWidget(4, QFormLayout::SpanningRole, descLabel);
+        horizontalLayout_2->addWidget(closeCaseButton);
+
+        assignCaseButton = new QPushButton(DetailsDialog);
+        assignCaseButton->setObjectName("assignCaseButton");
+
+        horizontalLayout_2->addWidget(assignCaseButton);
 
         buttonBox = new QDialogButtonBox(DetailsDialog);
         buttonBox->setObjectName("buttonBox");
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Ok);
 
-        formLayout->setWidget(5, QFormLayout::FieldRole, buttonBox);
+        horizontalLayout_2->addWidget(buttonBox);
 
-        closeCaseButton = new QPushButton(DetailsDialog);
-        closeCaseButton->setObjectName("closeCaseButton");
 
-        formLayout->setWidget(5, QFormLayout::LabelRole, closeCaseButton);
+        gridLayout->addLayout(horizontalLayout_2, 5, 0, 1, 2);
+
+        descLabel = new QLabel(DetailsDialog);
+        descLabel->setObjectName("descLabel");
+        descLabel->setMinimumSize(QSize(0, 275));
+        descLabel->setMaximumSize(QSize(16777215, 16777215));
+
+        gridLayout->addWidget(descLabel, 4, 0, 1, 2);
 
 
         retranslateUi(DetailsDialog);
@@ -121,8 +136,9 @@ public:
         typeResponse->setText(QCoreApplication::translate("DetailsDialog", "TextLabel", nullptr));
         statusLabel->setText(QCoreApplication::translate("DetailsDialog", "Status", nullptr));
         statusResponse->setText(QCoreApplication::translate("DetailsDialog", "TextLabel", nullptr));
-        descLabel->setText(QCoreApplication::translate("DetailsDialog", "Description", nullptr));
         closeCaseButton->setText(QCoreApplication::translate("DetailsDialog", "Close Case", nullptr));
+        assignCaseButton->setText(QCoreApplication::translate("DetailsDialog", "Assign Case", nullptr));
+        descLabel->setText(QCoreApplication::translate("DetailsDialog", "Description", nullptr));
     } // retranslateUi
 
 };

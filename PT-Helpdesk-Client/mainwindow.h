@@ -10,6 +10,7 @@
 #include <QProcess>
 #include "reportdialog.h"
 #include "reportview.h"
+#include "about.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,6 +32,8 @@ private slots:
     void on_actionShow_basic_report_triggered();
 
     void on_actionShow_advanced_report_triggered();
+
+    void on_actionAbout_Qt_triggered();
 
 private:
     Ui::MainWindow *ui;

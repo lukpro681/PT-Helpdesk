@@ -19,7 +19,6 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QTableWidget>
@@ -44,7 +43,6 @@ public:
     QTableWidget *tableWidget;
     QTextEdit *descText;
     QLabel *infoLabel3;
-    QLineEdit *sendToText;
     QGroupBox *groupBox_2;
     QHBoxLayout *horizontalLayout_4;
     QPushButton *addOptionalReport;
@@ -140,11 +138,6 @@ public:
 
         gridLayout->addWidget(infoLabel3, 3, 1, 1, 1);
 
-        sendToText = new QLineEdit(reportDialog);
-        sendToText->setObjectName("sendToText");
-
-        gridLayout->addWidget(sendToText, 4, 1, 1, 1);
-
         groupBox_2 = new QGroupBox(reportDialog);
         groupBox_2->setObjectName("groupBox_2");
         QFont font1;
@@ -193,7 +186,6 @@ public:
         QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
         ___qtablewidgetitem2->setText(QCoreApplication::translate("reportDialog", "Select", nullptr));
         infoLabel3->setText(QCoreApplication::translate("reportDialog", "Send to:", nullptr));
-        sendToText->setText(QString());
         groupBox_2->setTitle(QString());
         addOptionalReport->setText(QCoreApplication::translate("reportDialog", "Attach basic report", nullptr));
         optionalLabel->setText(QCoreApplication::translate("reportDialog", "Optional", nullptr));

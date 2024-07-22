@@ -19,8 +19,12 @@ signals:
 
     void closeCaseRequest(int row, const QString &from, const QString &type, const QString &description);
 
+    void assignCase(int row, const QString &status);
+
 private slots:
     void on_closeCaseButton_clicked();
+
+    void on_assignCaseButton_clicked();
 
 private:
     Ui::DetailsDialog *ui;

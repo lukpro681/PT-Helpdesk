@@ -1,0 +1,10 @@
+release/about.o
+release/main.o
+release/mainwindow.o
+release/reportdialog.o
+release/reportview.o
+release/qrc_qmake_qmake_qm_files.o
+release/moc_about.o
+release/moc_mainwindow.o
+release/moc_reportdialog.o
+release/moc_reportview.o

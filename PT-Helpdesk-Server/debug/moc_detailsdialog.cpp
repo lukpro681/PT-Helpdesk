@@ -45,11 +45,14 @@ static constexpr auto qt_meta_stringdata_CLASSDetailsDialogENDCLASS = QtMocHelpe
     "from",
     "type",
     "description",
-    "on_closeCaseButton_clicked"
+    "assignCase",
+    "status",
+    "on_closeCaseButton_clicked",
+    "on_assignCaseButton_clicked"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSDetailsDialogENDCLASS_t {
-    uint offsetsAndSizes[16];
+    uint offsetsAndSizes[22];
     char stringdata0[14];
     char stringdata1[17];
     char stringdata2[1];
@@ -57,7 +60,10 @@ struct qt_meta_stringdata_CLASSDetailsDialogENDCLASS_t {
     char stringdata4[5];
     char stringdata5[5];
     char stringdata6[12];
-    char stringdata7[27];
+    char stringdata7[11];
+    char stringdata8[7];
+    char stringdata9[27];
+    char stringdata10[28];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSDetailsDialogENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -70,7 +76,10 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSDetailsDialogENDCLASS_t qt_meta
         QT_MOC_LITERAL(36, 4),  // "from"
         QT_MOC_LITERAL(41, 4),  // "type"
         QT_MOC_LITERAL(46, 11),  // "description"
-        QT_MOC_LITERAL(58, 26)   // "on_closeCaseButton_clicked"
+        QT_MOC_LITERAL(58, 10),  // "assignCase"
+        QT_MOC_LITERAL(69, 6),  // "status"
+        QT_MOC_LITERAL(76, 26),  // "on_closeCaseButton_clicked"
+        QT_MOC_LITERAL(103, 27)   // "on_assignCaseButton_clicked"
     },
     "DetailsDialog",
     "closeCaseRequest",
@@ -79,7 +88,10 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSDetailsDialogENDCLASS_t qt_meta
     "from",
     "type",
     "description",
-    "on_closeCaseButton_clicked"
+    "assignCase",
+    "status",
+    "on_closeCaseButton_clicked",
+    "on_assignCaseButton_clicked"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -91,23 +103,27 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDetailsDialogENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    4,   26,    2, 0x06,    1 /* Public */,
+       1,    4,   38,    2, 0x06,    1 /* Public */,
+       7,    2,   47,    2, 0x06,    6 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       7,    0,   35,    2, 0x08,    6 /* Private */,
+       9,    0,   52,    2, 0x08,    9 /* Private */,
+      10,    0,   53,    2, 0x08,   10 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::QString, QMetaType::QString, QMetaType::QString,    3,    4,    5,    6,
+    QMetaType::Void, QMetaType::Int, QMetaType::QString,    3,    8,
 
  // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -128,7 +144,13 @@ Q_CONSTINIT const QMetaObject DetailsDialog::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        // method 'assignCase'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'on_closeCaseButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_assignCaseButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -141,7 +163,9 @@ void DetailsDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         (void)_t;
         switch (_id) {
         case 0: _t->closeCaseRequest((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4]))); break;
-        case 1: _t->on_closeCaseButton_clicked(); break;
+        case 1: _t->assignCase((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 2: _t->on_closeCaseButton_clicked(); break;
+        case 3: _t->on_assignCaseButton_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -150,6 +174,13 @@ void DetailsDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
             using _t = void (DetailsDialog::*)(int , const QString & , const QString & , const QString & );
             if (_t _q_method = &DetailsDialog::closeCaseRequest; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
+                return;
+            }
+        }
+        {
+            using _t = void (DetailsDialog::*)(int , const QString & );
+            if (_t _q_method = &DetailsDialog::assignCase; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 1;
                 return;
             }
         }
@@ -175,13 +206,13 @@ int DetailsDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 4)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 2;
+        _id -= 4;
     }
     return _id;
 }
@@ -191,5 +222,12 @@ void DetailsDialog::closeCaseRequest(int _t1, const QString & _t2, const QString
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void DetailsDialog::assignCase(int _t1, const QString & _t2)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_WARNING_POP

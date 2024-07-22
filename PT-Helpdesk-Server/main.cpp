@@ -10,7 +10,19 @@ int main(int argc, char *argv[])
     a.setWindowIcon(QIcon());
     a.setApplicationDisplayName("PT-Helpdesk Administrator");
     a.setApplicationName("PT-Helpdesk Administrator");
-    a.setApplicationVersion("0.1.0");
+    a.setApplicationVersion("1.0.0");
+
+    QString authors = "Łukasz Prokop, Wojciech Tworek";
+
+    QString programLicense = "This program is open-source and available for everyone under the GNU General Public License";
+
+
+    a.setProperty("Authors", authors);
+    a.setProperty("license", programLicense);
+
+
+
+
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
     for (const QString &locale : uiLanguages) {
@@ -21,7 +33,6 @@ int main(int argc, char *argv[])
         }
     }
     MainWindow w;
-    w.setWindowTitle("Main Dashboard");
     w.setWindowIcon(QIcon());
     w.show();
     return a.exec();

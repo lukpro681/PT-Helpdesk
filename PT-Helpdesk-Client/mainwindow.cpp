@@ -48,6 +48,9 @@ void MainWindow::on_reportButton_clicked()
 void MainWindow::on_actionAbout_triggered()
 {
 
+    About *dialog = new About(this);
+    dialog->setWindowTitle(tr("About App"));
+    dialog->exec();
 }
 
 
@@ -63,7 +66,13 @@ void MainWindow::on_actionShow_basic_report_triggered()
 void MainWindow::on_actionShow_advanced_report_triggered()
 {
     QProcess process;
-    process.start("msinfo32.exe");
-    process.waitForFinished();
+    process.startDetached("msinfo32");
+    process.deleteLater();
+}
+
+
+void MainWindow::on_actionAbout_Qt_triggered()
+{
+    qApp->aboutQt();
 }
 

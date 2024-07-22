@@ -15,8 +15,15 @@ int main(int argc, char *argv[])
     a.setApplicationName("PT Helpdesk - Client");
     a.setApplicationDisplayName("PT Helpdesk - Client");
     a.setDesktopFileName("PT Helpdesk - Client");
-    a.setApplicationVersion("0.3.1");
+    a.setApplicationVersion("1.0.0");
 
+    QString authors = "Łukasz Prokop, Wojciech Tworek";
+
+    QString programLicense = "This program is open-source and available for everyone under the GNU General Public License";
+
+
+    a.setProperty("Authors", authors);
+    a.setProperty("license", programLicense);
 
 
     QTranslator translator;
@@ -30,7 +37,6 @@ int main(int argc, char *argv[])
     }
     MainWindow w;
     w.setWindowIcon(QIcon());
-    w.setWindowTitle("Main menu");
     w.show();
     return a.exec();
 }

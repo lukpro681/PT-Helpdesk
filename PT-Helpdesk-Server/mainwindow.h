@@ -18,7 +18,13 @@
 #include <QUdpSocket>
 #include <QHostInfo>
 #include <QSysInfo>
+#include <QDateTime>
+#include <QFile>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
 #include "detailsdialog.h"
+#include "about.h"
 
 
 
@@ -59,14 +65,27 @@ private slots:
 
     void on_activeCaseWidget_cellClicked(int row, int column);
 
+
     void onCloseCaseRequest(int row, const QString &from, const QString &type, const QString &description);
 
+    void onAssignCase(int row);
+
+
+    void on_actionAbout_Qt_triggered();
+
+    void on_actionAbout_triggered();
+
+    void on_completeCaseWidget_cellClicked(int row, int column);
 
 signals:
     void messageReceived(const QString& sender, const QString& type, const QString& desc);
 
 
 private:
+
+    void saveCases();
+    void loadCases();
+
     QCloseEvent *closeTrayIcon;
     bool isMinimized;
 
@@ -77,5 +96,6 @@ private:
     QSystemTrayIcon *trayIcon;
     QMenu *menuTray;
     QList<QString> messages;
+    const QString fileName = "cases.json";
 };
 #endif // MAINWINDOW_H

@@ -39,10 +39,13 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(qApp, SIGNAL(aboutToQuit()),this,SLOT(onAboutToQuit()));
 
+    loadCases();
+
 }
 
 MainWindow::~MainWindow()
 {
+    saveCases();
     delete ui;
 }
 
@@ -52,13 +55,15 @@ QList<QString> MainWindow::getCases(){
 
 void MainWindow::addCaseToTable(const QString &sender, const QString &type, const QString &desc)
 {
-
+    QDateTime date = QDateTime::currentDateTime();
+    QString formattedDate = date.toString("dd.MM.yyyy hh:mm:ss");
     int row = ui->activeCaseWidget->rowCount();
     ui->activeCaseWidget->insertRow(row);
-    ui->activeCaseWidget->setItem(row, 0, new QTableWidgetItem(type));
-    ui->activeCaseWidget->setItem(row, 1, new QTableWidgetItem(sender));
-    ui->activeCaseWidget->setItem(row, 2, new QTableWidgetItem(tr("Open")));
-    ui->activeCaseWidget->setItem(row, 3, new QTableWidgetItem(desc));
+    ui->activeCaseWidget->setItem(row, 0, new QTableWidgetItem(formattedDate));
+    ui->activeCaseWidget->setItem(row, 1, new QTableWidgetItem(type));
+    ui->activeCaseWidget->setItem(row, 2, new QTableWidgetItem(sender));
+    ui->activeCaseWidget->setItem(row, 3, new QTableWidgetItem(tr("New")));
+    ui->activeCaseWidget->setItem(row, 4, new QTableWidgetItem(desc));
 
 }
 
@@ -71,6 +76,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
     }
     else
     {
+        saveCases();
         event->accept();
     }
 }
@@ -202,25 +208,148 @@ void MainWindow::on_activeCaseWidget_cellClicked(int row, int column)
     QTableWidget *table = qobject_cast<QTableWidget*>(sender());
     if (!table) return;
 
-    QString type = table->item(row, 0)->text();
-    QString from = table->item(row, 1)->text();
-    QString status = table->item(row, 2)->text();
-    QString description = table->item(row, 3)->text();
+    QString type = table->item(row, 1)->text();
+    QString from = table->item(row, 2)->text();
+    QString status = table->item(row, 3)->text();
+    QString description = table->item(row, 4)->text();
 
     DetailsDialog *dialog = new DetailsDialog(row, from, type, status, description, this);
     connect(dialog, &DetailsDialog::closeCaseRequest, this, &MainWindow::onCloseCaseRequest);
+
+    connect(dialog, &DetailsDialog::assignCase, this, &MainWindow::onAssignCase);
     dialog->exec();
 }
 
 void MainWindow::onCloseCaseRequest(int row, const QString &from, const QString &type, const QString &description)
 {
+    QDateTime closedDate = QDateTime::currentDateTime();
+    QString formattedClosedDate = closedDate.toString("dd.MM.yyyy hh:mm:ss");
+    QString openedDate = ui->activeCaseWidget->takeItem(row,0)->text();
     qDebug() << "Closing case from row:" << row;
     int closedRow = ui->completeCaseWidget->rowCount();
     ui->completeCaseWidget->insertRow(closedRow);
-    ui->completeCaseWidget->setItem(closedRow, 0, new QTableWidgetItem(type));
-    ui->completeCaseWidget->setItem(closedRow, 1, new QTableWidgetItem(from));
-    ui->completeCaseWidget->setItem(closedRow, 2, new QTableWidgetItem(tr("Closed")));
-    ui->completeCaseWidget->setItem(closedRow, 3, new QTableWidgetItem(description));
+    ui->completeCaseWidget->setItem(closedRow, 0, new QTableWidgetItem(openedDate));
+    ui->completeCaseWidget->setItem(closedRow, 1, new QTableWidgetItem(formattedClosedDate));
+    ui->completeCaseWidget->setItem(closedRow, 2, new QTableWidgetItem(type));
+    ui->completeCaseWidget->setItem(closedRow, 3, new QTableWidgetItem(from));
+    ui->completeCaseWidget->setItem(closedRow, 4, new QTableWidgetItem(tr("Closed")));
+    ui->completeCaseWidget->setItem(closedRow, 5, new QTableWidgetItem(description));
 
     ui->activeCaseWidget->removeRow(row);
 }
+
+void MainWindow::onAssignCase(int row)
+{
+    qDebug() << "Assigning case... " << row;
+    ui->activeCaseWidget->setItem(row,3, new QTableWidgetItem(tr("Open")));
+}
+
+void MainWindow::on_actionAbout_Qt_triggered()
+{
+    qApp->aboutQt();
+}
+
+
+void MainWindow::on_actionAbout_triggered()
+{
+    About *dialog = new About(this);
+    dialog->setWindowTitle(tr("About App"));
+    dialog->exec();
+}
+
+
+
+void MainWindow::on_completeCaseWidget_cellClicked(int row, int column)
+{
+    QTableWidget *table = qobject_cast<QTableWidget*>(sender());
+    if (!table) return;
+
+    QString type = table->item(row, 2)->text();
+    QString from = table->item(row, 3)->text();
+    QString status = table->item(row, 4)->text();
+    QString description = table->item(row, 5)->text();
+
+    DetailsDialog *dialog = new DetailsDialog(row, from, type, status, description, this);
+
+    dialog->exec();
+}
+
+void MainWindow::saveCases()
+{
+    QJsonArray activeCases;
+    QJsonArray completeCases;
+
+    for (int row = 0; row < ui->activeCaseWidget->rowCount(); ++row) {
+        QJsonObject caseObject;
+        caseObject["openedDate"] = ui->activeCaseWidget->item(row, 0)->text();
+        caseObject["type"] = ui->activeCaseWidget->item(row, 1)->text();
+        caseObject["from"] = ui->activeCaseWidget->item(row, 2)->text();
+        caseObject["status"] = ui->activeCaseWidget->item(row, 3)->text();
+        caseObject["description"] = ui->activeCaseWidget->item(row, 4)->text();
+        activeCases.append(caseObject);
+    }
+
+    for (int row = 0; row < ui->completeCaseWidget->rowCount(); ++row) {
+        QJsonObject caseObject;
+        caseObject["openedDate"] = ui->completeCaseWidget->item(row, 0)->text();
+        caseObject["closedDate"] = ui->completeCaseWidget->item(row, 1)->text();
+        caseObject["type"] = ui->completeCaseWidget->item(row, 2)->text();
+        caseObject["from"] = ui->completeCaseWidget->item(row, 3)->text();
+        caseObject["status"] = ui->completeCaseWidget->item(row, 4)->text();
+        caseObject["description"] = ui->completeCaseWidget->item(row, 5)->text();
+        completeCases.append(caseObject);
+    }
+
+    QJsonObject casesObject;
+    casesObject["activeCases"] = activeCases;
+    casesObject["completeCases"] = completeCases;
+
+    QFile saveFile(fileName);
+    if (!saveFile.open(QIODevice::WriteOnly)) {
+        qWarning("Couldn't open save file.");
+        return;
+    }
+
+    QJsonDocument saveDoc(casesObject);
+    saveFile.write(saveDoc.toJson());
+}
+void MainWindow::loadCases()
+{
+    QFile loadFile(fileName);
+
+    if (!loadFile.open(QIODevice::ReadOnly)) {
+        qWarning("Couldn't open load file.");
+        return;
+    }
+
+    QByteArray saveData = loadFile.readAll();
+    QJsonDocument loadDoc(QJsonDocument::fromJson(saveData));
+
+    QJsonObject json = loadDoc.object();
+    QJsonArray activeCases = json["activeCases"].toArray();
+    QJsonArray completeCases = json["completeCases"].toArray();
+
+    for (const QJsonValue &value : activeCases) {
+        QJsonObject caseObject = value.toObject();
+        int row = ui->activeCaseWidget->rowCount();
+        ui->activeCaseWidget->insertRow(row);
+        ui->activeCaseWidget->setItem(row, 0, new QTableWidgetItem(caseObject["openedDate"].toString()));
+        ui->activeCaseWidget->setItem(row, 1, new QTableWidgetItem(caseObject["type"].toString()));
+        ui->activeCaseWidget->setItem(row, 2, new QTableWidgetItem(caseObject["from"].toString()));
+        ui->activeCaseWidget->setItem(row, 3, new QTableWidgetItem(caseObject["status"].toString()));
+        ui->activeCaseWidget->setItem(row, 4, new QTableWidgetItem(caseObject["description"].toString()));
+    }
+
+    for (const QJsonValue &value : completeCases) {
+        QJsonObject caseObject = value.toObject();
+        int row = ui->completeCaseWidget->rowCount();
+        ui->completeCaseWidget->insertRow(row);
+        ui->completeCaseWidget->setItem(row, 0, new QTableWidgetItem(caseObject["openedDate"].toString()));
+        ui->completeCaseWidget->setItem(row, 1, new QTableWidgetItem(caseObject["closedDate"].toString()));
+        ui->completeCaseWidget->setItem(row, 2, new QTableWidgetItem(caseObject["type"].toString()));
+        ui->completeCaseWidget->setItem(row, 3, new QTableWidgetItem(caseObject["from"].toString()));
+        ui->completeCaseWidget->setItem(row, 4, new QTableWidgetItem(caseObject["status"].toString()));
+        ui->completeCaseWidget->setItem(row, 5, new QTableWidgetItem(caseObject["description"].toString()));
+    }
+}
+

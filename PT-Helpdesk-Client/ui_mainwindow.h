@@ -29,6 +29,7 @@ public:
     QAction *actionAbout;
     QAction *actionShow_basic_report;
     QAction *actionShow_advanced_report;
+    QAction *actionAbout_Qt;
     QWidget *centralwidget;
     QGridLayout *gridLayout;
     QLabel *tempLlabel;
@@ -49,6 +50,8 @@ public:
         actionShow_basic_report->setObjectName("actionShow_basic_report");
         actionShow_advanced_report = new QAction(MainWindow);
         actionShow_advanced_report->setObjectName("actionShow_advanced_report");
+        actionAbout_Qt = new QAction(MainWindow);
+        actionAbout_Qt->setObjectName("actionAbout_Qt");
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         gridLayout = new QGridLayout(centralwidget);
@@ -94,6 +97,7 @@ public:
         menubar->addAction(menuMore->menuAction());
         menubar->addAction(menuReport->menuAction());
         menuMore->addAction(actionAbout);
+        menuMore->addAction(actionAbout_Qt);
         menuReport->addAction(actionShow_basic_report);
         menuReport->addAction(actionShow_advanced_report);
 
@@ -108,6 +112,7 @@ public:
         actionAbout->setText(QCoreApplication::translate("MainWindow", "About", nullptr));
         actionShow_basic_report->setText(QCoreApplication::translate("MainWindow", "Show basic report", nullptr));
         actionShow_advanced_report->setText(QCoreApplication::translate("MainWindow", "Show advanced report", nullptr));
+        actionAbout_Qt->setText(QCoreApplication::translate("MainWindow", "About Qt", nullptr));
         tempLlabel->setText(QString());
         reportButton->setText(QCoreApplication::translate("MainWindow", "Create Case", nullptr));
         menuMore->setTitle(QCoreApplication::translate("MainWindow", "More", nullptr));

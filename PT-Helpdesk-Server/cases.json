@@ -1,0 +1,21 @@
+{
+    "activeCases": [
+        {
+            "description": "dwadwadawdas\n\n",
+            "from": "DESKTOP-6E28LT9",
+            "openedDate": "22.07.2024 21:39:44",
+            "status": "Przyjęty",
+            "type": "Incident"
+        }
+    ],
+    "completeCases": [
+        {
+            "closedDate": "22.07.2024 21:39:24",
+            "description": "wdawadsad\n\n",
+            "from": "DESKTOP-6E28LT9",
+            "openedDate": "22.07.2024 21:38:39",
+            "status": "Zamknięty",
+            "type": "Service Request"
+        }
+    ]
+}

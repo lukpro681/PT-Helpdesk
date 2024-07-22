@@ -42,22 +42,16 @@ static constexpr auto qt_meta_stringdata_CLASSreportDialogENDCLASS = QtMocHelper
     "on_pushButton_clicked",
     "",
     "on_addOptionalReport_clicked",
-    "on_pushButton_2_clicked",
-    "on_findButton_clicked",
-    "on_acceptButton_clicked",
-    "on_addHostsButton_clicked"
+    "on_findButton_clicked"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSreportDialogENDCLASS_t {
-    uint offsetsAndSizes[16];
+    uint offsetsAndSizes[10];
     char stringdata0[13];
     char stringdata1[22];
     char stringdata2[1];
     char stringdata3[29];
-    char stringdata4[24];
-    char stringdata5[22];
-    char stringdata6[24];
-    char stringdata7[26];
+    char stringdata4[22];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSreportDialogENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -67,19 +61,13 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSreportDialogENDCLASS_t qt_meta_
         QT_MOC_LITERAL(13, 21),  // "on_pushButton_clicked"
         QT_MOC_LITERAL(35, 0),  // ""
         QT_MOC_LITERAL(36, 28),  // "on_addOptionalReport_clicked"
-        QT_MOC_LITERAL(65, 23),  // "on_pushButton_2_clicked"
-        QT_MOC_LITERAL(89, 21),  // "on_findButton_clicked"
-        QT_MOC_LITERAL(111, 23),  // "on_acceptButton_clicked"
-        QT_MOC_LITERAL(135, 25)   // "on_addHostsButton_clicked"
+        QT_MOC_LITERAL(65, 21)   // "on_findButton_clicked"
     },
     "reportDialog",
     "on_pushButton_clicked",
     "",
     "on_addOptionalReport_clicked",
-    "on_pushButton_2_clicked",
-    "on_findButton_clicked",
-    "on_acceptButton_clicked",
-    "on_addHostsButton_clicked"
+    "on_findButton_clicked"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -91,7 +79,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSreportDialogENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -99,17 +87,11 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSreportDialogENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   50,    2, 0x08,    1 /* Private */,
-       3,    0,   51,    2, 0x08,    2 /* Private */,
-       4,    0,   52,    2, 0x08,    3 /* Private */,
-       5,    0,   53,    2, 0x08,    4 /* Private */,
-       6,    0,   54,    2, 0x08,    5 /* Private */,
-       7,    0,   55,    2, 0x08,    6 /* Private */,
+       1,    0,   32,    2, 0x08,    1 /* Private */,
+       3,    0,   33,    2, 0x08,    2 /* Private */,
+       4,    0,   34,    2, 0x08,    3 /* Private */,
 
  // slots: parameters
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -130,13 +112,7 @@ Q_CONSTINIT const QMetaObject reportDialog::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_addOptionalReport_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_pushButton_2_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_findButton_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_acceptButton_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_addHostsButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -150,10 +126,7 @@ void reportDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         switch (_id) {
         case 0: _t->on_pushButton_clicked(); break;
         case 1: _t->on_addOptionalReport_clicked(); break;
-        case 2: _t->on_pushButton_2_clicked(); break;
-        case 3: _t->on_findButton_clicked(); break;
-        case 4: _t->on_acceptButton_clicked(); break;
-        case 5: _t->on_addHostsButton_clicked(); break;
+        case 2: _t->on_findButton_clicked(); break;
         default: ;
         }
     }
@@ -179,13 +152,13 @@ int reportDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 3)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 6;
+        _id -= 3;
     }
     return _id;
 }

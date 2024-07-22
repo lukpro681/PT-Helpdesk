@@ -16,6 +16,11 @@ DetailsDialog::DetailsDialog(int row, const QString &from, const QString &type, 
     ui->statusResponse->setText(status);
     ui->descLabel->setText(description);
 
+    if(ui->statusResponse->text() == tr("Closed")) {
+        ui->closeCaseButton->setEnabled(false);
+        ui->assignCaseButton->setEnabled(false);
+    }
+
    // connect(ui->closeCaseButton, &QPushButton::clicked, this, &DetailsDialog::on_closeCaseButton_clicked);
 }
 
@@ -29,3 +34,10 @@ void DetailsDialog::on_closeCaseButton_clicked()
     emit closeCaseRequest(row, from, type, description);
     accept();
 }
+
+void DetailsDialog::on_assignCaseButton_clicked()
+{
+    emit assignCase(row, status);
+    accept();
+}
+
