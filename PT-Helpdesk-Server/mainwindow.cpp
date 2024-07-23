@@ -136,11 +136,6 @@ void MainWindow::readData()
 
 }
 
-void MainWindow::showData(const QString &sender, const QString &type, const QString &desc)
-{
-
-}
-
 void MainWindow::visibility()
 {
     if(isVisible())

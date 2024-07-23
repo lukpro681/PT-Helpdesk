@@ -1,6 +1,6 @@
 #include <windows.h>
 
-IDI_ICON1	ICON	"D:\\KOLOS REPO\\PT-Helpdesk\\PT-Helpdesk-Client\\PTIcon.ico"
+IDI_ICON1	ICON	"D:\\DevHomeRepos\\PT-Helpdesk\\PT-Helpdesk-Client\\PTIcon.ico"
 
 VS_VERSION_INFO VERSIONINFO
 	FILEVERSION 0,0,0,0

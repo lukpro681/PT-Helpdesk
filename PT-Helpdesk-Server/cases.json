@@ -6,6 +6,13 @@
             "openedDate": "22.07.2024 21:39:44",
             "status": "Przyjęty",
             "type": "Incident"
+        },
+        {
+            "description": "NIE MA\n\n",
+            "from": "DESKTOP-AOR2137",
+            "openedDate": "23.07.2024 13:43:36",
+            "status": "Nowy",
+            "type": "Komputer nie widzi drukarki"
         }
     ],
     "completeCases": [

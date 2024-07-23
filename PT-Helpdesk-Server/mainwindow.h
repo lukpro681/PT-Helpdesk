@@ -57,7 +57,6 @@ private slots:
 
     void newConnection();
     void readData();
-    void showData(const QString& sender, const QString& type, const QString& desc);
     void visibility();
     void closeTray();
     void captureData();
