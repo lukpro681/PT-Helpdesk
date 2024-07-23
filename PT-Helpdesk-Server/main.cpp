@@ -3,9 +3,41 @@
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
+#include <windows.h>
 
 int main(int argc, char *argv[])
 {
+
+
+     // Sprawdzanie uprawnień administratora
+     BOOL isElevated = FALSE;
+     HANDLE token = NULL;
+
+     if (OpenProcessToken(GetCurrentProcess(), TOKEN_QUERY, &token))
+     {
+         TOKEN_ELEVATION elevation;
+         DWORD size = sizeof(TOKEN_ELEVATION);
+
+         if (GetTokenInformation(token, TokenElevation, &elevation, sizeof(elevation), &size))
+         {
+             isElevated = elevation.TokenIsElevated;
+         }
+     }
+
+     // Jeśli nie jesteś administratorem, uruchamiaj aplikację ponownie z uprawnieniami administratora
+     if (!isElevated)
+     {
+         wchar_t executablePath[MAX_PATH];
+         GetModuleFileNameW(NULL, executablePath, MAX_PATH);
+
+         ShellExecuteW(NULL, L"runas", executablePath, NULL, NULL, SW_SHOWNORMAL);
+
+         return 0;
+     }
+
+
+
+
     QApplication a(argc, argv);
     a.setWindowIcon(QIcon());
     a.setApplicationDisplayName("PT-Helpdesk Administrator");
