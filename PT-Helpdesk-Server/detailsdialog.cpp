@@ -21,7 +21,6 @@ DetailsDialog::DetailsDialog(int row, const QString &from, const QString &type, 
         ui->assignCaseButton->setEnabled(false);
     }
 
-   // connect(ui->closeCaseButton, &QPushButton::clicked, this, &DetailsDialog::on_closeCaseButton_clicked);
 }
 
 DetailsDialog::~DetailsDialog()
