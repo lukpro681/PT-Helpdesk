@@ -191,7 +191,7 @@ void MainWindow::showMessage(const QString &sender, const QString &type, const Q
     msgBox.setWindowIcon(QIcon("PTIcon.ico"));
     msgBox.setWindowTitle(tr("New Case Arrived!!!"));
     msgBox.setText(Case);
-    msgBox.setWindowFlags(msgBox.windowFlags() | Qt::WindowStaysOnTopHint); // pojawianie się nad wszystkimi oknami
+    msgBox.setWindowFlags(msgBox.windowFlags() | Qt::WindowStaysOnTopHint); // appearing above other dialog windows
     msgBox.exec();
 }
 
